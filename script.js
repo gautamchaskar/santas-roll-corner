@@ -96,7 +96,7 @@ if (contactForm) {
     const name = document.getElementById("contact-name").value;
     const email = document.getElementById("contact-email").value;
     const message = document.getElementById("contact-message").value;
-    const phoneNumber = "919876543210"; // Updated to user provided number
+    const phoneNumber = "917709171839"; // Updated to correct number
 
     let text = `Hello Santa's Roll Corner!%0A%0AMy Name: ${name}`;
 
