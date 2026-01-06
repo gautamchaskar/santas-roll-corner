@@ -625,7 +625,7 @@ img {
   }
 
   .section {
-    padding: 3rem 0 1rem;
+    padding: 6rem 0 1rem !important; /* Increased to clear fixed header */
   }
 
   /* Restore Name | Price split (2 column feel) */
