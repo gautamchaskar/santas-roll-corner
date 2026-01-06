@@ -61,3 +61,21 @@ document.addEventListener("mousemove", (e) => {
     heroImg.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
   }
 });
+
+/* =============== SMART HEADER =============== */
+let lastScrollY = window.pageYOffset;
+const header = document.getElementById("header");
+
+window.addEventListener("scroll", () => {
+  const currentScrollY = window.pageYOffset;
+
+  if (currentScrollY > lastScrollY && currentScrollY > 50) {
+    // Scrolling DOWN -> Hide
+    header.classList.add("scroll-down");
+  } else {
+    // Scrolling UP -> Show
+    header.classList.remove("scroll-down");
+  }
+
+  lastScrollY = currentScrollY;
+});
