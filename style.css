@@ -653,17 +653,24 @@ img {
     position: fixed;
     top: 1.5rem;
     right: 1.5rem;
-    z-index: 1200;
-    background: rgba(5, 5, 5, 0.9); /* Dark bg for contrast */
-    border: 1px solid var(--yellow-color);
+    z-index: 9999; /* Nuclear option for z-index */
+    background: #000 !important; /* Solid black to ensure contrast */
+    border: 2px solid var(--yellow-color); /* Thicker border */
     border-radius: 50%;
-    width: 45px;
-    height: 45px;
-    display: flex;
+    width: 50px; /* Slightly larger */
+    height: 50px;
+    display: flex !important;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    color: var(--white); /* Ensure icon color */
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3); /* Glow to highlight it */
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  /* Force Icon to be white */
+  .header.scroll-down .nav-toggle i {
+    color: #fff !important;
+    font-size: 1.5rem;
   }
 
   /* Restore Name | Price split (2 column feel) */
