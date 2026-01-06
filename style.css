@@ -153,6 +153,10 @@ img {
   transition: all 0.3s ease;
 }
 
+.header.scroll-down {
+  transform: translateY(-100%);
+}
+
 .nav {
   height: var(--header-height);
   display: flex;
