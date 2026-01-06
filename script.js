@@ -63,19 +63,25 @@ document.addEventListener("mousemove", (e) => {
 });
 
 /* =============== SMART HEADER =============== */
-let lastScrollY = window.pageYOffset;
-const header = document.getElementById("header");
+document.addEventListener("DOMContentLoaded", () => {
+  let lastScrollY = window.scrollY;
+  const header = document.getElementById("header");
 
-window.addEventListener("scroll", () => {
-  const currentScrollY = window.pageYOffset;
+  if (header) {
+    window.addEventListener("scroll", () => {
+      const currentScrollY = window.scrollY;
 
-  if (currentScrollY > lastScrollY && currentScrollY > 50) {
-    // Scrolling DOWN -> Hide
-    header.classList.add("scroll-down");
+      if (currentScrollY > lastScrollY && currentScrollY > 10) {
+        // Scrolling DOWN -> Hide
+        header.classList.add("scroll-down");
+      } else {
+        // Scrolling UP -> Show
+        header.classList.remove("scroll-down");
+      }
+
+      lastScrollY = currentScrollY;
+    });
   } else {
-    // Scrolling UP -> Show
-    header.classList.remove("scroll-down");
+    console.error("Smart Header: #header element not found!");
   }
-
-  lastScrollY = currentScrollY;
 });
