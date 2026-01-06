@@ -386,18 +386,20 @@ img {
 .home-img-wrapper {
   position: relative;
   z-index: 10;
+  border: 2px solid var(--yellow-color);
+  padding: 1rem;
 }
 
 .home-img-wrapper img {
-  border-radius: 20px;
-  box-shadow: 20px 20px 0 var(--yellow-color); /* Lower-Right Shadow */
+  border-radius: 0; /* Remove rounded corners to match About */
+  box-shadow: none; /* Remove shadow */
   transition: 0.5s;
   filter: brightness(0.9) contrast(1.1);
 }
 
 .home-img-wrapper:hover img {
-  transform: translate(-5px, -5px); /* Move Top-Left */
-  box-shadow: 10px 10px 0 var(--yellow-color);
+  transform: none; /* Remove movement */
+  box-shadow: none;
 }
 
 /* =============== MENU =============== */
