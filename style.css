@@ -712,6 +712,18 @@ img {
     margin-right: auto !important;
     text-align: center !important;
   }
+
+  /* Reorder About Section: Text First, then Image */
+  .about-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .about-data {
+    order: 1;
+  }
+  .about-img {
+    order: 2;
+  }
 }
 
 /* Fix for small mobile menu layout (2 columns) */
