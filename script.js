@@ -94,10 +94,17 @@ if (contactForm) {
     e.preventDefault();
 
     const name = document.getElementById("contact-name").value;
+    const email = document.getElementById("contact-email").value;
     const message = document.getElementById("contact-message").value;
     const phoneNumber = "919876543210"; // Updated to user provided number
 
-    const text = `Hello Santa's Roll Corner!%0A%0AMy Name: ${name}%0A%0AMessage: ${message}`;
+    let text = `Hello Santa's Roll Corner!%0A%0AMy Name: ${name}`;
+
+    if (email) {
+      text += `%0AEmail: ${email}`;
+    }
+
+    text += `%0A%0AMessage: ${message}`;
     const url = `https://wa.me/${phoneNumber}?text=${text}`;
 
     window.open(url, "_blank");
