@@ -633,8 +633,32 @@ img {
     padding: 6rem 0 1rem !important; /* Increased to clear fixed header */
   }
 
+  /* Smart Header: Hide ID/Bg but keep Hamburger */
   .header.scroll-down {
-    transform: translateY(-100%);
+    transform: none;
+    background: transparent;
+    border-bottom: none;
+    backdrop-filter: none;
+    pointer-events: none; /* Pass clicks through invisible header */
+  }
+
+  .header.scroll-down .logo-container {
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s;
+  }
+
+  .header.scroll-down .nav-toggle {
+    pointer-events: auto; /* Keep toggle clickable */
+    background: rgba(5, 5, 5, 0.9); /* Dark bg for contrast */
+    border: 1px solid var(--yellow-color);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
   }
 
   /* Restore Name | Price split (2 column feel) */
