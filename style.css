@@ -47,6 +47,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 7rem; /* Global offset for fixed header */
 }
 
 body {
