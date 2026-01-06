@@ -85,3 +85,21 @@ document.addEventListener("DOMContentLoaded", () => {
     console.error("Smart Header: #header element not found!");
   }
 });
+
+/* =============== WHATSAPP CONTACT FORM =============== */
+const contactForm = document.getElementById("contact-form");
+
+if (contactForm) {
+  contactForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById("contact-name").value;
+    const message = document.getElementById("contact-message").value;
+    const phoneNumber = "919876543210"; // Updated to user provided number
+
+    const text = `Hello Santa's Roll Corner!%0A%0AMy Name: ${name}%0A%0AMessage: ${message}`;
+    const url = `https://wa.me/${phoneNumber}?text=${text}`;
+
+    window.open(url, "_blank");
+  });
+}

@@ -548,17 +548,20 @@
             </p>
           </div>
           <div class="contact-form-wrapper">
-            <form action="" class="contact-form">
+            <form action="" class="contact-form" id="contact-form">
               <div class="contact-inputs">
                 <input
                   type="text"
                   placeholder="Your Name"
                   class="contact-input"
+                  id="contact-name"
+                  required
                 />
                 <input
                   type="email"
-                  placeholder="Your Email"
+                  placeholder="Your Email (Optional)"
                   class="contact-input"
+                  id="contact-email"
                 />
               </div>
               <textarea
@@ -566,8 +569,12 @@
                 cols="30"
                 rows="5"
                 class="contact-input"
+                id="contact-message"
+                required
               ></textarea>
-              <button class="button">Send Message</button>
+              <button class="button" type="submit">
+                Send via WhatsApp <i class="fab fa-whatsapp button-icon"></i>
+              </button>
             </form>
           </div>
         </div>
