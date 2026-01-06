@@ -95,6 +95,9 @@ img {
   padding: 4.5rem 0 2rem;
 }
 @media screen and (max-width: 770px) {
+  html {
+    scroll-padding-top: 0; /* Smart header hides, so no offset needed */
+  }
   .section {
     padding: 3rem 0 1.5rem;
   }
