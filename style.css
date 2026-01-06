@@ -153,10 +153,6 @@ img {
   transition: all 0.3s ease;
 }
 
-.header.scroll-down {
-  transform: translateY(-100%);
-}
-
 .nav {
   height: var(--header-height);
   display: flex;
@@ -635,6 +631,10 @@ img {
 
   .section {
     padding: 6rem 0 1rem !important; /* Increased to clear fixed header */
+  }
+
+  .header.scroll-down {
+    transform: translateY(-100%);
   }
 
   /* Restore Name | Price split (2 column feel) */
