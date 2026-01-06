@@ -650,6 +650,10 @@ img {
 
   .header.scroll-down .nav-toggle {
     pointer-events: auto; /* Keep toggle clickable */
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 1200;
     background: rgba(5, 5, 5, 0.9); /* Dark bg for contrast */
     border: 1px solid var(--yellow-color);
     border-radius: 50%;
@@ -659,6 +663,7 @@ img {
     justify-content: center;
     align-items: center;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    color: var(--white); /* Ensure icon color */
   }
 
   /* Restore Name | Price split (2 column feel) */
