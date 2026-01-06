@@ -491,12 +491,12 @@ img {
 }
 
 .about-img img {
-  filter: grayscale(100%);
+  filter: grayscale(0%);
   transition: 0.5s;
 }
 
 .about-img:hover img {
-  filter: grayscale(0%);
+  filter: grayscale(100%);
 }
 
 .about-data .section-title {
