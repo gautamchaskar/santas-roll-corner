@@ -45,6 +45,10 @@
   margin: 0;
 }
 
+.clickable-area {
+  cursor: pointer;
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 7rem; /* Global offset for fixed header */
