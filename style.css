@@ -386,14 +386,14 @@ img {
 
 .home-img-wrapper img {
   border-radius: 20px;
-  box-shadow: 20px -20px 0 var(--yellow-color); /* Top-Right Shadow */
+  box-shadow: 20px 20px 0 var(--yellow-color); /* Lower-Right Shadow */
   transition: 0.5s;
   filter: brightness(0.9) contrast(1.1);
 }
 
 .home-img-wrapper:hover img {
-  transform: translate(-5px, 5px); /* Move Bottom-Left */
-  box-shadow: 10px -10px 0 var(--yellow-color);
+  transform: translate(-5px, -5px); /* Move Top-Left */
+  box-shadow: 10px 10px 0 var(--yellow-color);
 }
 
 /* =============== MENU =============== */
