@@ -54,7 +54,7 @@ navLink.forEach((n) => n.addEventListener("click", linkAction));
 
 // Parallax Effect on Mouse Move for Hero
 document.addEventListener("mousemove", (e) => {
-  const heroImg = document.querySelector(".home-img img");
+  const heroImg = document.querySelector(".home-img-wrapper img");
   if (heroImg) {
     const x = (window.innerWidth - e.pageX * 2) / 100;
     const y = (window.innerHeight - e.pageY * 2) / 100;

@@ -89,7 +89,7 @@ img {
 .section {
   padding: 4.5rem 0 2rem;
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 770px) {
   .section {
     padding: 3rem 0 1.5rem;
   }
@@ -135,16 +135,17 @@ img {
   margin-left: 0.5rem;
 }
 
-/* =============== HEADER =============== */
+/* =============== HEADER SUPER STRUCTURE =============== */
 .header {
   width: 100%;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 1000;
-  background: rgba(5, 5, 5, 0.9);
-  backdrop-filter: blur(10px);
+  background: rgba(5, 5, 5, 0.85);
+  backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+  transition: all 0.3s ease;
 }
 
 .nav {
@@ -152,108 +153,166 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.logo-container {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  font-size: 1.25rem;
-  font-family: var(--title-font);
-  font-weight: 700;
-  color: var(--white);
-}
-
-@media screen and (max-width: 350px) {
-  .logo-container {
-    font-size: 1rem;
-  }
-}
-
-.logo-img {
-  height: 45px;
-  border: 2px solid var(--yellow-color);
-  border-radius: 50%;
-}
-
-.nav-toggle {
-  color: var(--white);
-  font-size: 1.5rem;
-  cursor: pointer;
-  z-index: 1100;
   position: relative;
 }
 
-@media screen and (max-width: 767px) {
+/* --- LOGO --- */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1.1rem;
+  font-family: var(--title-font);
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 1px;
+  z-index: 1100; /* Above mobile menu */
+}
+
+.logo-img {
+  height: 40px;
+  border: 2px solid var(--yellow-color);
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.logo-container:hover .logo-img {
+  transform: rotate(10deg);
+}
+
+/* --- DESKTOP VIEW (Laptop/Tablet >= 771px) --- */
+@media screen and (min-width: 771px) {
+  .nav-toggle,
+  .nav-close {
+    display: none; /* Hide mobile controls */
+  }
+
+  .nav-list {
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+  }
+
+  .nav-link {
+    color: var(--white);
+    font-family: var(--title-font);
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 5px 0;
+  }
+
+  /* Desktop Hover Underline Effect */
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--yellow-color);
+    transition: width 0.3s ease;
+  }
+
+  .nav-link:hover::after,
+  .active-link::after {
+    width: 100%;
+  }
+}
+
+/* --- MOBILE VIEW (Phone <= 770px) --- */
+@media screen and (max-width: 770px) {
   .nav-menu {
     position: fixed;
-    top: -100%;
-    left: 0;
-    width: 100%;
-    background-color: var(--black-color);
-    padding: 6rem 1.5rem 4rem; /* More top padding for close button */
-    transition: 0.4s;
-    text-align: center;
-    border-bottom: 2px solid var(--yellow-color);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    z-index: 1000; /* Ensure it stays on top */
+    top: 0;
+    right: -100%; /* Hidden by default */
+    width: 80%; /* Drawer style */
+    height: 100vh;
+    background-color: #0a0a0a; /* Darker background */
+    padding: 6rem 2rem;
+    transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.8);
+    border-left: 2px solid var(--yellow-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* items one below each other */
+    z-index: 1000;
   }
-}
 
-/* Fix for small mobile menu layout (2 columns) */
-@media screen and (max-width: 600px) {
-  .menu-container {
-    grid-template-columns: repeat(2, 1fr); /* Force 2 columns */
-    gap: 1rem;
+  .show-menu {
+    right: 0; /* Slide in */
   }
-  .menu-card {
-    padding: 1rem; /* Reduce padding */
+
+  .nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem; /* Vertical spacing */
+    text-align: left;
   }
-  .menu-title {
-    font-size: 1rem; /* Smaller title */
+
+  .nav-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Separator line */
+    padding-bottom: 0.5rem;
+    opacity: 0; /* Animate in */
+    transform: translateX(50px);
+    transition: all 0.4s ease;
   }
-  .menu-price {
-    font-size: 0.9rem;
+
+  .show-menu .nav-item {
+    opacity: 1;
+    transform: translateX(0);
   }
-}
 
-.nav-close {
-  position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
-  font-size: 2rem;
-  color: var(--white);
-  cursor: pointer;
-  transition: 0.3s;
-}
+  /* Stagger animations */
+  .show-menu .nav-item:nth-child(1) {
+    transition-delay: 0.1s;
+  }
+  .show-menu .nav-item:nth-child(2) {
+    transition-delay: 0.2s;
+  }
+  .show-menu .nav-item:nth-child(3) {
+    transition-delay: 0.3s;
+  }
+  .show-menu .nav-item:nth-child(4) {
+    transition-delay: 0.4s;
+  }
 
-.nav-close:hover {
-  color: var(--yellow-color);
-  transform: rotate(90deg);
-}
+  .nav-link {
+    color: var(--white);
+    font-family: var(--title-font);
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: block;
+  }
 
-.nav-list {
-  display: flex;
-  flex-direction: column;
-  row-gap: 2rem;
-}
+  .active-link {
+    color: var(--yellow-color);
+    padding-left: 10px; /* Indent active */
+  }
 
-.nav-link {
-  color: var(--white);
-  font-family: var(--title-font);
-  font-size: 1.5rem; /* Increased from 1.25rem for easier tapping */
-  text-transform: uppercase;
-  transition: 0.3s;
-  padding: 0.5rem 0; /* Added padding for vertical spacing */
-  display: block; /* Ensure full width click area */
-}
+  /* Close Button */
+  .nav-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 2rem;
+    color: var(--yellow-color);
+    cursor: pointer;
+  }
 
-.nav-link:hover,
-.active-link {
-  color: var(--yellow-color);
-}
-.show-menu {
-  top: 0;
+  /* Toggle Button */
+  .nav-toggle {
+    font-size: 1.5rem;
+    color: var(--white);
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.5rem;
+    border-radius: 4px;
+    z-index: 1100;
+  }
 }
 
 /* =============== HERO =============== */
@@ -266,7 +325,7 @@ img {
   position: relative;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 770px) {
   .home {
     padding-top: 6rem;
   }
@@ -340,6 +399,11 @@ img {
 .menu-container {
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem 1.5rem;
+}
+
+/* Compensate for image pull-up only on inner grids */
+.menu-category .menu-container {
+  margin-top: 5rem;
 }
 
 .section-subtitle {
@@ -511,24 +575,8 @@ img {
 }
 
 /* =============== RESPONSIVE =============== */
-@media screen and (min-width: 768px) {
-  .nav {
-    height: calc(var(--header-height) + 1rem);
-  }
-  .nav-toggle {
-    display: none;
-  }
-  .nav-list {
-    flex-direction: row;
-    column-gap: 3rem;
-  }
-  .nav-menu {
-    position: static;
-    background: transparent;
-    padding: 0;
-    width: auto;
-    border: none;
-  }
+@media screen and (min-width: 771px) {
+  /* Nav styles removed - handled in main header block */
 
   .home-container {
     grid-template-columns: repeat(2, 1fr);
@@ -548,37 +596,13 @@ img {
   }
 }
 
-/* =========================================
-   MOBILE OVERRIDES (Priority Fixes)
-   ========================================= */
-
-/* Navigation Fix: Ensure it hides off-screen */
-@media screen and (max-width: 767px) {
-  .nav-menu {
-    position: fixed !important;
-    top: -150% !important; /* Start far above */
-    left: 0;
-    width: 100%;
-    background-color: var(--black-color);
-    padding: 6rem 1.5rem 4rem;
-    transition: top 0.4s ease;
-    text-align: center;
-    border-bottom: 2px solid var(--yellow-color);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-    display: block !important;
-  }
-
-  .show-menu {
-    top: 0 !important; /* Slide down */
-  }
-}
+/* [Removed conflicting mobile nav overrides] */
 
 /* 2-Column Menu Grid Fix */
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 770px) {
   .menu-container {
-    grid-template-columns: 1fr 1fr !important; /* Force 2 columns */
-    gap: 0.75rem !important;
+    grid-template-columns: 1fr !important; /* Force 1 column */
+    gap: 4.5rem !important; /* Reduced from 6rem */
   }
 
   .menu-card {
@@ -603,10 +627,68 @@ img {
   .section {
     padding: 3rem 0 1rem;
   }
+
+  /* Restore Name | Price split (2 column feel) */
+  .menu-list {
+    text-align: left !important;
+  }
+
+  .menu-list li {
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    gap: 1rem !important;
+    margin-bottom: 0.5rem !important;
+    align-items: center !important;
+  }
+
+  /* Force Grid Items to Center */
+  .home-container,
+  .about-container,
+  .contact-container {
+    justify-items: center !important;
+    text-align: center !important;
+  }
+
+  /* Center All Section Titles/Content on Mobile */
+  .section-title,
+  .about-data .section-title,
+  .about-data,
+  .contact-data,
+  .home-data {
+    text-align: center !important;
+    width: 100% !important;
+  }
+
+  .home-description,
+  .about-description {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+  }
 }
 
-/* Nav Toggle Visibility */
-.nav-toggle {
-  z-index: 1100 !important;
-  position: relative !important;
+/* Fix for small mobile menu layout (2 columns) */
+/* [Removed conflicting 600px 2-column override] */
+
+/* [Removed redundant nav-toggle] */
+
+/* =============== SCROLL REVEAL ANIMATION =============== */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Enhancements for better UI */
+.home-img-wrapper {
+  perspective: 1000px;
+}
+
+.btn-glow {
+  box-shadow: 0 0 15px var(--yellow-color);
 }
